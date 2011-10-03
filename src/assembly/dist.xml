@@ -1,0 +1,37 @@
+<assembly>
+	<id>dist</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<componentDescriptors>
+		<componentDescriptor>src/assembly/docs.xml</componentDescriptor>
+	</componentDescriptors>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<moduleSets>
+		<moduleSet>
+			<includes>
+				<include>
+					org.springframework.sandbox.foo:spring-foo-parent
+				</include>
+				<include>
+					org.springframework.sandbox.foo:spring-foo-mu
+				</include>
+				<include>
+					org.springframework.sandbox.foo:spring-foo-nu
+				</include>
+			</includes>
+			<sources>
+				<includeModuleDirectory>false</includeModuleDirectory>
+				<fileSets>
+					<fileSet>
+						<directory>target</directory>
+						<outputDirectory>libs</outputDirectory>
+						<includes>
+							<include>*.jar</include>
+						</includes>
+					</fileSet>
+				</fileSets>
+			</sources>
+		</moduleSet>
+	</moduleSets>
+</assembly>
