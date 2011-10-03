@@ -7,7 +7,10 @@
 	<version>1.0.0.BUILD-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
+		<!-- avoid spurious console warnings -->
 		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
+		<!-- used in bundlor template.mf files -->
+		<spring.osgi.range>[1.0.0, 2.0.0)</spring.osgi.range>
 	</properties>
 	<build>
 		<plugins>
@@ -34,6 +37,21 @@
 						<id>attach-sources</id>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.springsource.bundlor</groupId>
+				<artifactId>com.springsource.bundlor.maven</artifactId>
+				<version>1.0.0.RELEASE</version>
+				<inherited>true</inherited>
+				<executions>
+					<execution>
+						<id>bundlor-transform</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>bundlor</goal>
 						</goals>
 					</execution>
 				</executions>
