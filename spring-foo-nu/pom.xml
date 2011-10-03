@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-foo-nu</artifactId>
 	<packaging>jar</packaging>
@@ -8,14 +8,14 @@
 	<parent>
 		<groupId>org.springframework.sandbox.foo</groupId>
 		<artifactId>spring-foo-parent</artifactId>
-		<version>1.0.0.BUILD-SNAPSHOT</version>
+		<version>1.0.0.M2</version>
 		<relativePath>../spring-foo-parent</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.sandbox.foo</groupId>
 			<artifactId>spring-foo-mu</artifactId>
-			<version>1.0.0.BUILD-SNAPSHOT</version>
+			<version>1.0.0.M2</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -57,4 +57,3 @@
 		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
 	</properties>
 </project>
-

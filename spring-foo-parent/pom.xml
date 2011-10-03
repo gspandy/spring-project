@@ -1,10 +1,9 @@
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.sandbox.foo</groupId>
 	<artifactId>spring-foo-parent</artifactId>
-	<version>1.0.0.BUILD-SNAPSHOT</version>
+	<version>1.0.0.M2</version>
 	<name>Spring Foo Parent</name>
 	<description>Parent for Spring Foo example project</description>
 	<packaging>pom</packaging>
@@ -72,9 +71,9 @@
 		</plugins>
 	</build>
 	<scm>
-		<url>http://github.com/cbeams/spring-foo</url>
-		<connection>scm:git:git://github.com/cbeams/spring-foo.git</connection>
-		<developerConnection>scm:git:git://github.com/cbeams/spring-foo.git</developerConnection>
+		<url>v1.0.0.M2</url>
+		<connection>scm:svn:v1.0.0.M2</connection>
+		<developerConnection>scm:svn:v1.0.0.M2</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
@@ -101,4 +100,3 @@
 		</developer>
 	</developers>
 </project>
-
