@@ -5,7 +5,20 @@
 	<groupId>org.springframework.sandbox.foo</groupId>
 	<artifactId>spring-foo-parent</artifactId>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
+	<name>Spring Foo Parent</name>
+	<description>Parent for Spring Foo example project</description>
 	<packaging>pom</packaging>
+	<url>http://github.com/cbeams/spring-foo</url>
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<organization>
+		<name>SpringSource</name>
+		<url>http://springsource.org</url>
+	</organization>
 	<properties>
 		<!-- avoid spurious console warnings -->
 		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
@@ -58,5 +71,34 @@
 			</plugin>
 		</plugins>
 	</build>
+	<scm>
+		<url>http://github.com/cbeams/spring-foo</url>
+		<connection>scm:git:git://github.com/cbeams/spring-foo.git</connection>
+		<developerConnection>scm:git:git://github.com/cbeams/spring-foo.git</developerConnection>
+	</scm>
+	<issueManagement>
+		<system>JIRA</system>
+		<!-- example url -> does not actually exist -->
+		<url>http://jira.springsource.org/browse/FOO</url>
+	</issueManagement>
+	<mailingLists>
+		<mailingList>
+			<!-- example urls -> do not actually exist -->
+			<name>Spring Foo Forum</name>
+			<post>http://forum.springframework.org/forumdisplay.php?f=99</post>
+			<archive>http://forum.springframework.org/forumdisplay.php?f=99</archive>
+		</mailingList>
+	</mailingLists>
+	<ciManagement>
+		<system>Bamboo</system>
+		<url>https://build.springsource.org/browse/SBOX-FOO</url>
+	</ciManagement>
+	<developers>
+		<developer>
+			<id>cbeams</id>
+			<name>Chris Beams</name>
+			<email>cbeams@vmware.com</email>
+		</developer>
+	</developers>
 </project>
 

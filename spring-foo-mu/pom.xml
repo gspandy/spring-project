@@ -3,6 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-foo-mu</artifactId>
 	<packaging>jar</packaging>
+	<name>Spring Foo Mu</name>
+	<description>Spring Foo Mu</description>
 	<parent>
 		<groupId>org.springframework.sandbox.foo</groupId>
 		<artifactId>spring-foo-parent</artifactId>

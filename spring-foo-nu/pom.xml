@@ -3,6 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-foo-nu</artifactId>
 	<packaging>jar</packaging>
+	<name>Spring Foo Nu</name>
+	<description>Spring Foo Nu</description>
 	<parent>
 		<groupId>org.springframework.sandbox.foo</groupId>
 		<artifactId>spring-foo-parent</artifactId>
