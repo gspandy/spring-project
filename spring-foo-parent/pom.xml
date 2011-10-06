@@ -70,6 +70,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!-- these values get unintentionally rewritten during release staging from bamboo
+	     see: https://issues.jfrog.org/jira/browse/BI-111 -->
 	<scm>
 		<url>v1.0.0.M2</url>
 		<connection>scm:svn:v1.0.0.M2</connection>
