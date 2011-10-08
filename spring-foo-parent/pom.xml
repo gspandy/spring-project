@@ -70,8 +70,30 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>pgp</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<!-- these values get unintentionally rewritten during release staging from bamboo
-	     see: https://issues.jfrog.org/jira/browse/BI-111 -->
+	see: https://issues.jfrog.org/jira/browse/BI-111 -->
 	<scm>
 		<url>v1.0.0.M2</url>
 		<connection>scm:svn:v1.0.0.M2</connection>
