@@ -1,5 +1,5 @@
-Bundle-SymbolicName: org.springframework.foo.mu
-Bundle-Name: Spring Foo Mu
+Bundle-SymbolicName: org.springframework.project.core
+Bundle-Name: Spring Project Core
 Bundle-Vendor: SpringSource
 Bundle-ManifestVersion: 2
 Import-Package: 

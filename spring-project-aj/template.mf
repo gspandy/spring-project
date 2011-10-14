@@ -1,10 +1,10 @@
-Bundle-SymbolicName: org.springframework.foo.nu
-Bundle-Name: Spring Foo Nu
+Bundle-SymbolicName: org.springframework.project.aj
+Bundle-Name: Spring Project AspectJ
 Bundle-Vendor: SpringSource
 Bundle-ManifestVersion: 2
 Import-Package: 
 Import-Template: 
- org.springframework.foo.mu.*;version="${spring.osgi.range}",
+ org.springframework.project.core.*;version="${spring.osgi.range}",
  org.apache.log4j.*;version="[1.2.15, 2.0.0)";resolution:=optional,
 Ignored-Existing-Headers: 
  Bnd-LastModified,

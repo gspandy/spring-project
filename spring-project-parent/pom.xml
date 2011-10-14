@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.project</groupId>
-	<artifactId>spring-project-parent</artifactId>
+	<artifactId>spring-project-maven-parent</artifactId>
 	<version>1.0.2.BUILD-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Spring Project Parent</name>
-	<description>Demonstrates conventional use of a parent pom in a Spring project</description>
+	<name>Spring Project (Maven) Parent</name>
+	<description>Demonstrates conventional use of a parent pom in a Maven-built Spring project</description>
 	<url>http://github.com/cbeams/spring-parent</url>
 	<licenses>
 		<license>

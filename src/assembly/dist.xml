@@ -11,13 +11,13 @@
 		<moduleSet>
 			<includes>
 				<include>
-					org.springframework.project:spring-project-parent
+					org.springframework.project:spring-project-maven-parent
 				</include>
 				<include>
-					org.springframework.project:spring-project-core
+					org.springframework.project:spring-project-maven-core
 				</include>
 				<include>
-					org.springframework.project:spring-project-aj
+					org.springframework.project:spring-project-maven-aj
 				</include>
 			</includes>
 			<sources>
