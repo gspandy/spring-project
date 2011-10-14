@@ -1,28 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component>
-	<fileSets>
-		<fileSet>
-			<directory>src/assembly</directory>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>license.txt</include>
-				<include>notice.txt</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<directory>.</directory>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>README.md</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<directory>target/site/reference</directory>
-			<outputDirectory>docs/reference</outputDirectory>
-		</fileSet>
-		<fileSet>
-			<directory>target/apidocs</directory>
-			<outputDirectory>docs/api</outputDirectory>
-		</fileSet>
-	</fileSets>
-</component>
+<assembly>
+	<id>docs</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<componentDescriptors>
+		<componentDescriptor>src/assembly/docs-component.xml</componentDescriptor>
+	</componentDescriptors>
+	<includeBaseDirectory>true</includeBaseDirectory>
+</assembly>

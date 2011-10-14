@@ -156,6 +156,7 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<inherited>false</inherited>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
 						<id>zip-files</id>
@@ -166,6 +167,7 @@
 						</goals>
 						<configuration>
 							<descriptors>
+								<descriptor>src/assembly/docs.xml</descriptor>
 								<descriptor>src/assembly/dist.xml</descriptor>
 							</descriptors>
 						</configuration>
