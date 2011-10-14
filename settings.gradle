@@ -1,0 +1,2 @@
+include 'spring-project-core'
+include 'spring-project-aj'

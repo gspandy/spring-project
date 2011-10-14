@@ -1,0 +1,37 @@
+allprojects {
+    group = 'org.springframework.project.gradle'
+    version = '1.0.2.BUILD-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    //apply plugin: 'bundlor'
+
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.6
+
+    // enable all compiler warnings; individual projects may customize further
+    xLintArg = '-Xlint:all'
+    [compileJava, compileTestJava]*.options*.compilerArgs = [xLintArg]
+
+    repositories {
+        mavenRepo urls: 'https://internal-repo.springsource.org/libs-snapshot'
+    }
+
+    dependencies {
+        compile 'log4j:log4j:1.2.16'
+        testCompile 'junit:junit:4.8.2'
+    }
+}
+
+project(':spring-project-core') {
+}
+
+project(':spring-project-aj') {
+    dependencies {
+        compile project(':spring-project-core')
+    }
+}

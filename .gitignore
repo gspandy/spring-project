@@ -1,8 +1,12 @@
 # Ignore Maven output directory
 target
 
-# Ignore Gradle output directory
+# Ignore Gradle output and cache directories
 build
+.gradle
+
+# Ignore Eclipse output directory
+bin
 
 # Ignore IDE configuration files. prefer automatic generation based on build
 # system metadata to avoid inadvertent inclusion of platform- or host-specific
@@ -19,3 +23,4 @@ build
 
 # Ignore vi(m) swap files
 *.sw?
+
