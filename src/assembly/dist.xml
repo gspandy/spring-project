@@ -11,13 +11,13 @@
 		<moduleSet>
 			<includes>
 				<include>
-					org.springframework.sandbox.foo:spring-foo-parent
+					org.springframework.project:spring-project-parent
 				</include>
 				<include>
-					org.springframework.sandbox.foo:spring-foo-mu
+					org.springframework.project:spring-project-core
 				</include>
 				<include>
-					org.springframework.sandbox.foo:spring-foo-nu
+					org.springframework.project:spring-project-aj
 				</include>
 			</includes>
 			<sources>

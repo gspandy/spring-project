@@ -2,7 +2,7 @@
 <glossary xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="glossary"
     xmlns:xlink="http://www.w3.org/1999/xlink">
   <glossdiv>
-    <title>Spring Foo Glossary</title>
+    <title>Spring Project Glossary</title>
 
     <glossentry>
       <glossterm>Foo</glossterm>

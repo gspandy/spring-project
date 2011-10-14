@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="spring-foo-reference"
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="spring-project-reference"
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink">
 	<bookinfo>
-		<title>Spring Foo - Reference Documentation</title>
+		<title>Spring Project - Reference Documentation</title>
 
-		<releaseinfo>Spring Foo 1.0.0.BUILD-SNAPSHOT</releaseinfo>
+		<releaseinfo>Spring Project 1.0.0.BUILD-SNAPSHOT</releaseinfo>
 
 		<authorgroup>
 			<author>
@@ -22,7 +22,7 @@
 		</legalnotice>
 	</bookinfo>
 
-	<xi:include href="spring-foo-intro.xml" />
+	<xi:include href="spring-project-intro.xml" />
 
 	<xi:include href="appendix.xml" />
 

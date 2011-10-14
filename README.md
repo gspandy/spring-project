@@ -1,12 +1,12 @@
-# Spring Foo
+# Spring Project
 
-Spring Foo is a sample project demonstrating how to configure and manage a Spring open source project using either Gradle or Maven build systems.
+Spring Project demonstrates how to configure and manage a Spring open source project using either Gradle or Maven build systems.
 
 # Building from Source
 
 Clone the git repository using the URL on the Github home page:
 
-    $ git clone git://github.com/cbeams/spring-foo.git
+    $ git clone git://github.com/cbeams/spring-project.git
     $ cd spring-foo
 
 ## Command Line
