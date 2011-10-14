@@ -8,14 +8,14 @@
 	<parent>
 		<groupId>org.springframework.sandbox.foo</groupId>
 		<artifactId>spring-foo-parent</artifactId>
-		<version>1.0.0.RELEASE</version>
+		<version>1.0.1.BUILD-SNAPSHOT</version>
 		<relativePath>../spring-foo-parent</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.sandbox.foo</groupId>
 			<artifactId>spring-foo-mu</artifactId>
-			<version>1.0.0.RELEASE</version>
+			<version>1.0.1.BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
