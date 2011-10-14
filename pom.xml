@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.sandbox.foo</groupId>
 	<artifactId>spring-foo</artifactId>
-	<version>1.0.1.BUILD-SNAPSHOT</version>
+	<version>1.0.2.RELEASE</version>
 	<name>Spring Foo Maven</name>
 	<description>Spring Foo Maven example project</description>
 	<packaging>pom</packaging>
 	<url>http://github.com/cbeams/spring-foo</url>
 	<scm>
-		<url>http://github.com/cbeams/spring-foo</url>
-		<connection>scm:git:git://github.com/cbeams/spring-foo.git</connection>
-		<developerConnection>scm:git:git://github.com/cbeams/spring-foo.git</developerConnection>
+		<url>v1.0.2.RELEASE</url>
+		<connection>scm:svn:v1.0.2.RELEASE</connection>
+		<developerConnection>scm:svn:v1.0.2.RELEASE</developerConnection>
 	</scm>
 	<developers>
 		<developer>
