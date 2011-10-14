@@ -8,6 +8,12 @@
 	<description>Spring Foo Maven example project</description>
 	<packaging>pom</packaging>
 	<url>http://github.com/cbeams/spring-foo</url>
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 	<scm>
 		<url>v1.0.2.RELEASE_2</url>
 		<connection>scm:svn:v1.0.2.RELEASE_2</connection>
