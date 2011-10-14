@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>spring-project-maven-aj</artifactId>
+	<artifactId>spring-project-aj</artifactId>
 	<packaging>jar</packaging>
 	<name>Spring Project (Maven) AspectJ</name>
 	<description>Demonstrates use of AspectJ within a Maven-built Spring project</description>
 	<parent>
-		<groupId>org.springframework.project</groupId>
-		<artifactId>spring-project-maven-parent</artifactId>
+		<groupId>org.springframework.project.maven</groupId>
+		<artifactId>spring-project-parent</artifactId>
 		<version>1.0.2.BUILD-SNAPSHOT</version>
 		<relativePath>../spring-project-parent</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.project</groupId>
-			<artifactId>spring-project-maven-core</artifactId>
+			<groupId>org.springframework.project.maven</groupId>
+			<artifactId>spring-project-core</artifactId>
 			<version>1.0.2.BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
