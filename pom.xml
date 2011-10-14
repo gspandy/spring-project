@@ -4,7 +4,22 @@
 	<groupId>org.springframework.sandbox.foo</groupId>
 	<artifactId>spring-foo</artifactId>
 	<version>1.0.1.BUILD-SNAPSHOT</version>
+	<name>Spring Foo Maven</name>
+	<description>Spring Foo Maven example project</description>
 	<packaging>pom</packaging>
+	<url>http://github.com/cbeams/spring-foo</url>
+	<scm>
+		<url>http://github.com/cbeams/spring-foo</url>
+		<connection>scm:git:git://github.com/cbeams/spring-foo.git</connection>
+		<developerConnection>scm:git:git://github.com/cbeams/spring-foo.git</developerConnection>
+	</scm>
+	<developers>
+		<developer>
+			<id>cbeams</id>
+			<name>Chris Beams</name>
+			<email>cbeams@vmware.com</email>
+		</developer>
+	</developers>
 	<modules>
 		<module>spring-foo-parent</module>
 		<module>spring-foo-mu</module>

@@ -95,9 +95,9 @@
 	<!-- these values get unintentionally rewritten during release staging from bamboo
 	see: https://issues.jfrog.org/jira/browse/BI-111 -->
 	<scm>
-		<url>v1.0.0.RELEASE</url>
-		<connection>scm:svn:v1.0.0.RELEASE</connection>
-		<developerConnection>scm:svn:v1.0.0.RELEASE</developerConnection>
+		<url>http://github.com/cbeams/spring-foo</url>
+		<connection>scm:git:git://github.com/cbeams/spring-foo.git</connection>
+		<developerConnection>scm:git:git://github.com/cbeams/spring-foo.git</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
