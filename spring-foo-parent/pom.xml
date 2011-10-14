@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.sandbox.foo</groupId>
 	<artifactId>spring-foo-parent</artifactId>
-	<version>1.0.3.BUILD-SNAPSHOT</version>
+	<version>1.0.2.RELEASE</version>
 	<name>Spring Foo Parent</name>
 	<description>Parent for Spring Foo example project</description>
 	<packaging>pom</packaging>
@@ -95,9 +95,9 @@
 	<!-- these values get unintentionally rewritten during release staging from bamboo
 	see: https://issues.jfrog.org/jira/browse/BI-111 -->
 	<scm>
-		<url>v1.0.2.RELEASE</url>
-		<connection>scm:svn:v1.0.2.RELEASE</connection>
-		<developerConnection>scm:svn:v1.0.2.RELEASE</developerConnection>
+		<url>v1.0.2.RELEASE_2</url>
+		<connection>scm:svn:v1.0.2.RELEASE_2</connection>
+		<developerConnection>scm:svn:v1.0.2.RELEASE_2</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
