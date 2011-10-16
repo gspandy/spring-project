@@ -51,6 +51,21 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.springsource.bundlor</groupId>
+				<artifactId>com.springsource.bundlor.maven</artifactId>
+				<configuration>
+					<manifestTemplate>
+Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
+Bundle-Name: ${project.name}
+Bundle-SymbolicName: org.springframework.project.aj
+Import-Template: 
+ org.springframework.project.core.*;version="${project.version}",
+ org.apache.log4j.*;version="[1.2.16, 2.0.0)"
+					</manifestTemplate>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>

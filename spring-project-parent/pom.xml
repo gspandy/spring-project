@@ -74,6 +74,16 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<!-- child poms declare manifest templates inline
+					using the <manifestTemplate/> element. This entry
+					is to work around a bug in the Bundlor Maven plugin
+					that forces the user to specify a template path
+					even when specifying an inline template. The file
+					simply needs to exist; it's content is ignored, thus
+					the use of pom.xml, which is guaranteed to exist. -->
+					<manifestTemplatePath>pom.xml</manifestTemplatePath>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
