@@ -23,7 +23,6 @@ subprojects {
     sourceCompatibility = 1.6
     targetCompatibility = 1.6
 
-    // enable all compiler warnings; individual projects may customize further
     xLintArg = '-Xlint:all'
     [compileJava, compileTestJava]*.options*.compilerArgs = [xLintArg]
 
@@ -34,6 +33,18 @@ subprojects {
     dependencies {
         compile 'log4j:log4j:1.2.16'
         testCompile 'junit:junit:4.8.2'
+    }
+
+    bundlor {
+        enabled = true
+        failOnWarnings = true
+        bundleManifestVersion = 2
+        bundleVendor = 'SpringSource'
+        bundleName = project.description
+        bundleVersion = project.version
+        importTemplate = [
+            'org.apache.log4j.*;version="[1.2.16, 2.0.0)"'
+        ]
     }
 
     task sourcesJar(type: Jar, dependsOn:classes) {
@@ -71,9 +82,20 @@ subprojects {
 }
 
 project(':spring-project-core') {
+    description = "Spring Project (Gradle) Core"
+    bundlor {
+        bundleSymbolicName = 'org.springframework.project.core'
+    }
 }
 
 project(':spring-project-aj') {
+    description = "Spring Project (Gradle) AspectJ"
+    bundlor {
+        bundleSymbolicName = 'org.springframework.project.aj'
+        importTemplate += [
+            "org.springframework.project.core.*;version=\"${project.version}\""
+        ]
+    }
     dependencies {
         compile project(':spring-project-core')
     }
