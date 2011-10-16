@@ -104,7 +104,7 @@ task aggregatedJavadoc(type: Javadoc) {
     source subprojects.collect { project ->
         project.sourceSets.main.allJava
     }
-    destinationDir = new File(buildDir, 'javadoc')
+    destinationDir = new File(buildDir, "docs/${project.version}/javadoc-api")
     classpath = files(subprojects.collect { project ->
         project.sourceSets.main.compileClasspath
     })
@@ -112,7 +112,7 @@ task aggregatedJavadoc(type: Javadoc) {
 
 task docsZip(type: Zip, dependsOn:aggregatedJavadoc) {
     classifier = 'docs'
-    from aggregatedJavadoc.destinationDir
+    from(buildDir) { include 'docs/**/*' }
 }
 
 artifacts {
