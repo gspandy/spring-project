@@ -2,18 +2,18 @@
 <component>
 	<fileSets>
 		<fileSet>
-			<directory>src/assembly</directory>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>license.txt</include>
-				<include>notice.txt</include>
-			</includes>
-		</fileSet>
-		<fileSet>
 			<directory>.</directory>
 			<outputDirectory></outputDirectory>
 			<includes>
 				<include>README.md</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>src/dist</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>license.txt</include>
+				<include>notice.txt</include>
 			</includes>
 		</fileSet>
 		<fileSet>
