@@ -28,8 +28,6 @@
 	<properties>
 		<!-- avoid spurious console warnings -->
 		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
-		<!-- used in bundlor template.mf files -->
-		<spring.osgi.range>[1.0.0, 2.0.0)</spring.osgi.range>
 	</properties>
 	<build>
 		<plugins>
@@ -83,6 +81,18 @@
 					simply needs to exist; it's content is ignored, thus
 					the use of pom.xml, which is guaranteed to exist. -->
 					<manifestTemplatePath>pom.xml</manifestTemplatePath>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<!-- pick up bundlor-generated manifest -->
+					<archive>
+						<manifestFile>
+							${project.build.outputDirectory}/META-INF/MANIFEST.MF
+						</manifestFile>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
