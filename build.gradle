@@ -70,7 +70,6 @@ subprojects {
         archives sourcesJar
         archives javadocJar
     }
-
 }
 
 project(':spring-project-core') {
@@ -112,11 +111,36 @@ task aggregatedJavadoc(type: Javadoc) {
 
 task docsZip(type: Zip, dependsOn:aggregatedJavadoc) {
     classifier = 'docs'
-    from(buildDir) { include 'docs/**/*' }
+    from(buildDir) {
+        include 'docs/**/*'
+    }
+}
+
+task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
+    classifier = 'dist'
+    from(rootDir) {
+        include 'README.md'
+    }
+    from('src/dist') {
+        include 'license.txt'
+        include 'notice.txt'
+    }
+    from(buildDir) {
+        include 'docs/**/*'
+    }
+    subprojects.each { subproject ->
+        dependsOn subproject.jar
+        dependsOn subproject.sourcesJar
+        dependsOn subproject.javadocJar
+        into('libs') {
+            from subproject.jar.archivePath
+            from subproject.sourcesJar.archivePath
+            from subproject.javadocJar.archivePath
+        }
+    }
 }
 
 artifacts {
-    //archives distZip
+    archives distZip
     archives docsZip
 }
-
