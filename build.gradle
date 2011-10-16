@@ -10,15 +10,6 @@ allprojects {
     configurations {
         published.extendsFrom archives, signatures
     }
-
-    uploadPublished {
-        repositories {
-            mavenDeployer {
-                repository(url: uri("${buildDir}/repo")) // uncomment for testing
-                beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
-            }
-        }
-    }
 }
 
 subprojects {
@@ -68,6 +59,20 @@ subprojects {
     artifacts {
         archives sourcesJar
         archives javadocJar
+    }
+
+    install {
+        repositories.mavenInstaller {
+            customizePom(pom)
+        }
+    }
+
+    uploadPublished {
+        repositories.mavenDeployer {
+            repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
+            customizePom(pom)
+            beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
+        }
     }
 }
 
@@ -142,4 +147,57 @@ task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
 artifacts {
     archives distZip
     archives docsZip
+}
+
+uploadPublished {
+    repositories.mavenDeployer {
+        repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
+    }
+}
+
+def customizePom(def pom) {
+
+    // no need for test-scoped dependencies in maven central poms
+    pom.whenConfigured { generatedPom ->
+        generatedPom.dependencies.removeAll { dep ->
+            dep.scope == 'test'
+        }
+    }
+
+    // add all items necessary for maven central publication
+    pom.project {
+        name = project.description
+        description = project.description
+        url = 'https://github.com/cbeams/spring-project'
+        organization {
+            name = 'SpringSource'
+            url = 'http://springsource.org'
+        }
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+        scm {
+            url = 'https://github.com/cbeams/spring-project'
+            connection = 'scm:git:git://github.com/cbeams/spring-project.git'
+            developerConnection = 'scm:git:git://github.com/cbeams/spring-project.git'
+        }
+        developers {
+            developer {
+                id = 'cbeams'
+                name = 'Chris Beams'
+                email = 'cbeams@vmware.com'
+            }
+        }
+        contributors {
+            contributor {
+                id = 'jdoe'
+                name = 'John Doe'
+                email = 'john@doe.org'
+            }
+        }
+    }
 }
