@@ -11,16 +11,20 @@ buildscript {
 
 allprojects {
     group = 'org.springframework.project.gradle'
-    apply plugin: 'signing'
+    //apply plugin: 'signing' // https://issues.jfrog.org/jira/browse/GAP-105
     apply plugin: 'maven'
 
+    /* https://issues.jfrog.org/jira/browse/GAP-105
     signing {
         sign configurations.archives
     }
+    */
 
+    /* https://issues.jfrog.org/jira/browse/GAP-105
     configurations {
         published.extendsFrom archives, signatures
     }
+    */
 }
 
 subprojects {
@@ -78,9 +82,17 @@ subprojects {
         }
     }
 
+    /* https://issues.jfrog.org/jira/browse/GAP-105
     uploadPublished {
         repositories.mavenDeployer {
             repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
+            customizePom(pom)
+            beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
+        }
+    }
+    */
+    uploadArchives {
+        repositories.mavenDeployer {
             customizePom(pom)
             beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
         }
@@ -173,11 +185,13 @@ artifacts {
     archives docsZip
 }
 
+/* https://issues.jfrog.org/jira/browse/GAP-105
 uploadPublished {
     repositories.mavenDeployer {
         repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
     }
 }
+*/
 
 def customizePom(def pom) {
 
