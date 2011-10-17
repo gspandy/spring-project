@@ -91,12 +91,6 @@ subprojects {
         }
     }
     */
-    uploadArchives {
-        repositories.mavenDeployer {
-            customizePom(pom)
-            beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
-        }
-    }
 }
 
 project(':spring-project-core') {
