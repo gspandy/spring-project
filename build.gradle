@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        mavenLocal()
+        //mavenLocal()
         mavenRepo urls: 'https://internal-repo.springsource.org/plugins-snapshot'
     }
     dependencies {
