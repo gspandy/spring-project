@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenLocal()
-        mavenRepo url: 'https://internal-repo.springsource.org/plugins-snapshot'
+        mavenRepo urls: 'https://internal-repo.springsource.org/plugins-snapshot'
     }
     dependencies {
         classpath 'org.springframework.build.bundlor:gradle-bundlor-plugin:1.0.0-SNAPSHOT'
@@ -40,8 +40,8 @@ subprojects {
     [compileJava, compileTestJava]*.options*.compilerArgs = [xLintArg]
 
     repositories {
-        mavenRepo url: 'https://internal-repo.springsource.org/libs-snapshot'
-        mavenRepo url: 'https://internal-repo.springsource.org/plugins-release'
+        mavenRepo urls: 'https://internal-repo.springsource.org/libs-snapshot'
+        mavenRepo urls: 'https://internal-repo.springsource.org/plugins-release'
     }
 
     dependencies {
@@ -124,7 +124,9 @@ project(':spring-project-aj') {
 //
 task wrapper(type: Wrapper) {
     jarFile = '.wrapper/wrapper/gradle-wrapper.jar'
-    distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111016033240+0200-bin.zip'
+    // return to milestone-5 when https://issues.jfrog.org/jira/browse/GAP-105 is fixed
+    //distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111016033240+0200-bin.zip'
+    distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-3-bin.zip'
 }
 
 task aggregatedJavadoc(type: Javadoc) {
@@ -179,6 +181,7 @@ task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
 }
 
 
+apply plugin: 'base'
 
 artifacts {
     archives distZip
