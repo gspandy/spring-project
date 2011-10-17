@@ -1,16 +1,18 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenRepo url: 'https://internal-repo.springsource.org/plugins-snapshot'
     }
     dependencies {
         classpath 'org.springframework.build.bundlor:gradle-bundlor-plugin:1.0.0-SNAPSHOT'
+        classpath 'org.springframework.build.docbook:gradle-docbook-plugin:1.0.0-SNAPSHOT'
     }
 }
 
 allprojects {
+    group = 'org.springframework.project.gradle'
     apply plugin: 'signing'
     apply plugin: 'maven'
-    group = 'org.springframework.project.gradle'
 
     signing {
         sign configurations.archives
@@ -123,7 +125,17 @@ task aggregatedJavadoc(type: Javadoc) {
     })
 }
 
-task docsZip(type: Zip, dependsOn:aggregatedJavadoc) {
+apply plugin: 'docbook'
+
+docbookHtml {
+    sourceFileName = 'index.xml'
+    stylesheet = file('src/reference/resources/xsl/html-custom.xsl')
+    classpath = buildscript.configurations.classpath
+    sourceDirectory = file('src/site/docbook/reference')
+    xdir = 'html'
+}
+
+task docsZip(type: Zip, dependsOn:[aggregatedJavadoc,docbookHtml]) {
     classifier = 'docs'
     from(buildDir) {
         include 'docs/**/*'
@@ -153,6 +165,8 @@ task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
         }
     }
 }
+
+
 
 artifacts {
     archives distZip
