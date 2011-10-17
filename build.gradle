@@ -12,17 +12,14 @@ buildscript {
 
 allprojects {
     group = 'org.springframework.project.gradle'
-    //apply plugin: 'signing' // https://issues.jfrog.org/jira/browse/GAP-105
     apply plugin: 'maven'
     apply plugin: 'artifactory'
-
     /* https://issues.jfrog.org/jira/browse/GAP-105
+    apply plugin: 'signing'
+
     signing {
         sign configurations.archives
     }
-    */
-
-    /* https://issues.jfrog.org/jira/browse/GAP-105
     configurations {
         published.extendsFrom archives, signatures
     }
