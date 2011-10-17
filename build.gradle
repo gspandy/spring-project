@@ -75,12 +75,6 @@ subprojects {
         archives javadocJar
     }
 
-    install {
-        repositories.mavenInstaller {
-            customizePom(pom)
-        }
-    }
-
     /* https://issues.jfrog.org/jira/browse/GAP-105
     uploadPublished {
         repositories.mavenDeployer {
