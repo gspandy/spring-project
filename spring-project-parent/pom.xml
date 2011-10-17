@@ -14,12 +14,10 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-	<!-- these values get unintentionally rewritten during release staging from bamboo
-	see: https://issues.jfrog.org/jira/browse/BI-111 -->
 	<scm>
-		<url>v1.0.2.RELEASE_3</url>
-		<connection>scm:svn:v1.0.2.RELEASE_3</connection>
-		<developerConnection>scm:svn:v1.0.2.RELEASE_3</developerConnection>
+		<url>http://github.com/cbeams/spring-project</url>
+		<connection>scm:git:git://github.com/cbeams/spring-project.git</connection>
+		<developerConnection>scm:git:git://github.com/cbeams/spring-project.git</developerConnection>
 	</scm>
 	<organization>
 		<name>SpringSource</name>
