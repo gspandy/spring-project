@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath 'org.springframework.build.bundlor:gradle-bundlor-plugin:1.0.0-SNAPSHOT'
         classpath 'org.springframework.build.docbook:gradle-docbook-plugin:1.0.0-SNAPSHOT'
+        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:2.0.6'
     }
 }
 
@@ -13,6 +14,7 @@ allprojects {
     group = 'org.springframework.project.gradle'
     //apply plugin: 'signing' // https://issues.jfrog.org/jira/browse/GAP-105
     apply plugin: 'maven'
+    apply plugin: 'artifactory'
 
     /* https://issues.jfrog.org/jira/browse/GAP-105
     signing {
@@ -236,3 +238,37 @@ def customizePom(def pom) {
         }
     }
 }
+
+repoUser = project.properties['REPO_USERNAME']
+repoPass = project.properties['REPO_PASSWORD']
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(':artifactoryPublish') &&
+            (repoUser == null || repoPass == null)) {
+        throw new InvalidUserDataException(
+            "Please provide REPO_USERNAME and REPO_PASSWORD properties")
+    }
+}
+
+artifactory {
+    contextUrl = 'https://internal-repo.springsource.org'
+    publish {
+        repository {
+            repoKey = 'libs-snapshot-local'
+            username = repoUser
+            password = repoPass
+        }
+        defaults {
+            publishConfigs('archives')
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-releases'
+            username = repoUser
+            password = repoPass
+            maven = true
+        }
+    }
+}
+
