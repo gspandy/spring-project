@@ -109,6 +109,7 @@ project(':spring-project-aj') {
 // root project configuration
 //
 task wrapper(type: Wrapper) {
+    jarFile = '.wrapper/wrapper/gradle-wrapper.jar'
     distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111016033240+0200-bin.zip'
 }
 
