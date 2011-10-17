@@ -106,85 +106,114 @@ project(':spring-project-aj') {
     }
 }
 
-//
-// root project configuration
-//
-task wrapper(type: Wrapper) {
-    jarFile = '.wrapper/wrapper/gradle-wrapper.jar'
-    // return to milestone-5 when https://issues.jfrog.org/jira/browse/GAP-105 is fixed
-    //distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111016033240+0200-bin.zip'
-    distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-3-bin.zip'
-}
+project(':') { // root project
+    apply plugin: 'docbook'
+    apply plugin: 'base'
 
-task aggregatedJavadoc(type: Javadoc) {
-    source subprojects.collect { project ->
-        project.sourceSets.main.allJava
+    task wrapper(type: Wrapper) {
+        jarFile = '.wrapper/wrapper/gradle-wrapper.jar'
+        // return to milestone-5 when https://issues.jfrog.org/jira/browse/GAP-105 is fixed
+        //distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111016033240+0200-bin.zip'
+        distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-3-bin.zip'
     }
-    destinationDir = new File(buildDir, "docs/${project.version}/javadoc-api")
-    classpath = files(subprojects.collect { project ->
-        project.sourceSets.main.compileClasspath
-    })
-}
 
-apply plugin: 'docbook'
+    task aggregatedJavadoc(type: Javadoc) {
+        source subprojects.collect { project ->
+            project.sourceSets.main.allJava
+        }
+        destinationDir = new File(buildDir, "docs/${project.version}/javadoc-api")
+        classpath = files(subprojects.collect { project ->
+            project.sourceSets.main.compileClasspath
+        })
+    }
 
-docbookHtml {
-    sourceFileName = 'index.xml'
-    stylesheet = file('src/reference/resources/xsl/html-custom.xsl')
-    classpath = buildscript.configurations.classpath
-    sourceDirectory = file('src/site/docbook/reference')
-    xdir = 'html'
-}
+    task docsZip(type: Zip, dependsOn:[aggregatedJavadoc,docbookHtml]) {
+        classifier = 'docs'
+        from(buildDir) {
+            include 'docs/**/*'
+        }
+    }
 
-task docsZip(type: Zip, dependsOn:[aggregatedJavadoc,docbookHtml]) {
-    classifier = 'docs'
-    from(buildDir) {
-        include 'docs/**/*'
+    task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
+        classifier = 'dist'
+        from(rootDir) {
+            include 'README.md'
+        }
+        from('src/dist') {
+            include 'license.txt'
+            include 'notice.txt'
+        }
+        from(buildDir) {
+            include 'docs/**/*'
+        }
+        subprojects.each { subproject ->
+            dependsOn subproject.jar
+            dependsOn subproject.sourcesJar
+            dependsOn subproject.javadocJar
+            into('libs') {
+                from subproject.jar.archivePath
+                from subproject.sourcesJar.archivePath
+                from subproject.javadocJar.archivePath
+            }
+        }
     }
-}
 
-task distZip(type: Zip, dependsOn:['aggregatedJavadoc']) {
-    classifier = 'dist'
-    from(rootDir) {
-        include 'README.md'
+    artifacts {
+        archives distZip
+        archives docsZip
     }
-    from('src/dist') {
-        include 'license.txt'
-        include 'notice.txt'
+
+    docbookHtml {
+        sourceFileName = 'index.xml'
+        stylesheet = file('src/reference/resources/xsl/html-custom.xsl')
+        classpath = buildscript.configurations.classpath
+        sourceDirectory = file('src/site/docbook/reference')
+        xdir = 'html'
     }
-    from(buildDir) {
-        include 'docs/**/*'
+
+    /* https://issues.jfrog.org/jira/browse/GAP-105
+    uploadPublished {
+        repositories.mavenDeployer {
+            repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
+        }
     }
-    subprojects.each { subproject ->
-        dependsOn subproject.jar
-        dependsOn subproject.sourcesJar
-        dependsOn subproject.javadocJar
-        into('libs') {
-            from subproject.jar.archivePath
-            from subproject.sourcesJar.archivePath
-            from subproject.javadocJar.archivePath
+    */
+
+    repoUser = project.properties['REPO_USERNAME']
+    repoPass = project.properties['REPO_PASSWORD']
+
+    gradle.taskGraph.whenReady {taskGraph ->
+        if (taskGraph.hasTask(':artifactoryPublish') &&
+                (repoUser == null || repoPass == null)) {
+            throw new InvalidUserDataException(
+                "Please provide REPO_USERNAME and REPO_PASSWORD properties")
+        }
+    }
+
+    artifactory {
+        contextUrl = 'https://internal-repo.springsource.org'
+        publish {
+            repository {
+                repoKey = 'libs-snapshot-local'
+                username = repoUser
+                password = repoPass
+            }
+            defaults {
+                publishConfigs('archives')
+            }
+        }
+        resolve {
+            repository {
+                repoKey = 'libs-releases'
+                username = repoUser
+                password = repoPass
+                maven = true
+            }
         }
     }
 }
 
-
-apply plugin: 'base'
-
-artifacts {
-    archives distZip
-    archives docsZip
-}
-
-/* https://issues.jfrog.org/jira/browse/GAP-105
-uploadPublished {
-    repositories.mavenDeployer {
-        repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
-    }
-}
-*/
-
 def customizePom(def pom) {
-
     // no need for test-scoped dependencies in maven central poms
     pom.whenConfigured { generatedPom ->
         generatedPom.dependencies.removeAll { dep ->
@@ -226,39 +255,6 @@ def customizePom(def pom) {
                 name = 'John Doe'
                 email = 'john@doe.org'
             }
-        }
-    }
-}
-
-repoUser = project.properties['REPO_USERNAME']
-repoPass = project.properties['REPO_PASSWORD']
-
-gradle.taskGraph.whenReady {taskGraph ->
-    if (taskGraph.hasTask(':artifactoryPublish') &&
-            (repoUser == null || repoPass == null)) {
-        throw new InvalidUserDataException(
-            "Please provide REPO_USERNAME and REPO_PASSWORD properties")
-    }
-}
-
-artifactory {
-    contextUrl = 'https://internal-repo.springsource.org'
-    publish {
-        repository {
-            repoKey = 'libs-snapshot-local'
-            username = repoUser
-            password = repoPass
-        }
-        defaults {
-            publishConfigs('archives')
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'libs-releases'
-            username = repoUser
-            password = repoPass
-            maven = true
         }
     }
 }
