@@ -12,15 +12,6 @@ buildscript {
 allprojects {
     group = 'org.springframework.project.gradle'
     apply plugin: 'artifactory'
-    // https://issues.jfrog.org/jira/browse/GAP-105
-    // apply plugin: 'signing'
-    //
-    // signing {
-    //     sign configurations.archives
-    // }
-    // configurations {
-    //     published.extendsFrom archives, signatures
-    // }
 }
 
 subprojects { subproj ->
@@ -73,14 +64,6 @@ subprojects { subproj ->
         archives javadocJar
     }
 
-    // https://issues.jfrog.org/jira/browse/GAP-105
-    // uploadPublished {
-    //     repositories.mavenDeployer {
-    //         repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
-    //         customizePom(pom, subproj)
-    //         beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
-    //     }
-    // }
     install {
         repositories.mavenInstaller {
             customizePom(pom, subproj)
@@ -170,13 +153,6 @@ project(':') { // root project
         sourceDirectory = file('src/site/docbook/reference')
         xdir = 'html'
     }
-
-    // https://issues.jfrog.org/jira/browse/GAP-105
-    // uploadPublished {
-    //     repositories.mavenDeployer {
-    //         repository(url: uri("${rootProject.buildDir}/repo")) // uncomment for testing
-    //     }
-    // }
 
     repoUser = project.properties['REPO_USERNAME']
     repoPass = project.properties['REPO_PASSWORD']
