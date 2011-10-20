@@ -8,14 +8,14 @@
 	<parent>
 		<groupId>org.springframework.project.maven</groupId>
 		<artifactId>spring-project-parent</artifactId>
-		<version>1.0.0.BUILD-SNAPSHOT</version>
+		<version>1.0.0.M1</version>
 		<relativePath>../spring-project-parent</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.project.maven</groupId>
 			<artifactId>spring-project-core</artifactId>
-			<version>1.0.0.BUILD-SNAPSHOT</version>
+			<version>1.0.0.M1</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
