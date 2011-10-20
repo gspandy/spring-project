@@ -157,15 +157,13 @@ project(':') { // root project
     repoUser = project.properties['REPO_USERNAME']
     repoPass = project.properties['REPO_PASSWORD']
 
-    /*
     gradle.taskGraph.whenReady {taskGraph ->
         if (taskGraph.hasTask(':artifactoryPublish') &&
                 (repoUser == null || repoPass == null)) {
-            throw new InvalidUserDataException(
-                "Please provide REPO_USERNAME and REPO_PASSWORD properties")
+            logger.warn("'artifactoryPublish' goal specified, but " +
+                "REPO_USERNAME/REPO_PASSWORD properties have not been specified")
         }
     }
-    */
 
     artifactory {
         contextUrl = 'https://internal-repo.springsource.org'
