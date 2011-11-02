@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        mavenRepo url: 'https://internal-repo.springsource.org/plugins-snapshot'
+        mavenRepo url: 'https://repo.springsource.org/plugins-snapshot'
     }
     dependencies {
         classpath 'org.springframework.build.bundlor:gradle-bundlor-plugin:1.0.0-SNAPSHOT'
@@ -28,8 +28,8 @@ subprojects { subproj ->
     [compileJava, compileTestJava]*.options*.compilerArgs = [xLintArg]
 
     repositories {
-        mavenRepo url: 'https://internal-repo.springsource.org/libs-snapshot'
-        mavenRepo url: 'https://internal-repo.springsource.org/plugins-release'
+        mavenRepo url: 'https://repo.springsource.org/libs-snapshot'
+        mavenRepo url: 'https://repo.springsource.org/plugins-release'
     }
 
     dependencies {
@@ -166,7 +166,7 @@ project(':') { // root project
     }
 
     artifactory {
-        contextUrl = 'https://internal-repo.springsource.org'
+        contextUrl = 'https://repo.springsource.org'
         publish {
             repository {
                 repoKey = 'libs-snapshot-local'
