@@ -95,11 +95,6 @@ project(':') { // root project
     apply plugin: 'docbook'
     apply plugin: 'base'
 
-    task wrapper(type: Wrapper) {
-        jarFile = '.wrapper/wrapper/gradle-wrapper.jar'
-        distributionUrl='http://repo.gradle.org/gradle/distributions-snapshots/gradle-1.0-milestone-5-20111018061954+0200-bin.zip'
-    }
-
     task aggregatedJavadoc(type: Javadoc) {
         source subprojects.collect { project ->
             project.sourceSets.main.allJava
